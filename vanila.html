@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React JS</title>
+  </head>
+  <body>
+    <div>
+      <span>Total Click Count: </span>
+      <button>click!</button>
+    </div>
+    <script>
+      const countNum = document.querySelector("span");
+      const btn = document.querySelector("button");
+
+      let conunter = 0;
+
+      function onClickCount() {
+        conunter++;
+        console.log(conunter);
+        countNum.innerText = `Total Click Count: ${conunter}`;
+      }
+
+      btn.addEventListener("click", onClickCount);
+    </script>
+  </body>
+</html>
