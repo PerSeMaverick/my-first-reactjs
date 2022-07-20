@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React!</title>
+    <title>React JS</title>
   </head>
   <body>
     <div id="root"></div>
@@ -14,16 +14,17 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
+      let counter = 0;
+      function countUp() {
+        //code
+      }
+      const data = React.useState(0);
+
       function App() {
-        const [counter, setCounter] = React.useState(0);
-        const onClick = () => {
-          // setCounter(counter + 1);
-          setCounter((current) => current + 1);
-        };
         return (
           <div>
-            <h3>Total Clicks: {counter}</h3>
-            <button onClick={onClick}>Click!</button>
+            <h3>Total Click: </h3>
+            <button>click me</button>
           </div>
         );
       }
