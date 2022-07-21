@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React JS</title>
+    <link rel="stylesheet" href="css/temp.css" />
+    <title>React temp</title>
   </head>
   <body>
     <div id="root"></div>
@@ -14,17 +15,49 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
-      let counter = 0;
-      function countUp() {
-        //code
-      }
-      const data = React.useState(0);
-
       function App() {
+        let [글제목, 글제목변경] = React.useState(["남자코트", "강남우동", "파이썬", "카카오"]);
         return (
-          <div>
-            <h3>Total Click: </h3>
-            <button>click me</button>
+          <div className="app">
+            <div className="black-nav">
+              <h4>ReactBlog</h4>
+            </div>
+
+            <button
+              onClick={() => {
+                let copy = [...글제목];
+                let 정렬 = copy.sort();
+                글제목변경(정렬);
+              }}
+            >
+              가나다순정렬
+            </button>
+            <button
+              onClick={() => {
+                let copy = [...글제목];
+                copy[0] = "여자코트";
+                글제목변경(copy);
+              }}
+            >
+              제목변경
+            </button>
+
+            <div>
+              <h4>{글제목[0]}</h4>
+              <p>7/21발행</p>
+            </div>
+            <div>
+              <h4>{글제목[1]}</h4>
+              <p>7/21발행</p>
+            </div>
+            <div>
+              <h4>{글제목[2]}</h4>
+              <p>7/21발행</p>
+            </div>
+            <div>
+              <h4>{글제목[3]}</h4>
+              <p>7/21발행</p>
+            </div>
           </div>
         );
       }
