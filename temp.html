@@ -10,8 +10,9 @@
   <body>
     <div id="root"></div>
 
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
@@ -26,52 +27,51 @@
         );
       }
 
+      function ColumnList({ num }) {
+        let 글제목 = ["남자코트", "강남우동"];
+        let [like, setLike] = React.useState(0);
+        return (
+          <div className="list">
+            <h4>
+              {글제목[{ num }]}
+              <span onClick={setLike((current) => current + 1)}>
+                👍
+                {like}
+              </span>
+            </h4>
+            <p>7/21발행</p>
+          </div>
+        );
+      }
+
+      function Sorting() {
+        return (
+          <button
+            onClick={() => {
+              let copy = [...글제목];
+              let 정렬 = copy.sort();
+              글제목정렬(정렬);
+            }}
+          >
+            가나다순정렬
+          </button>
+        );
+      }
+
+      ColumnList.propTypes = {
+        value: PropTypes.number,
+      };
+
       function App() {
-        let [글제목, 글제목변경] = React.useState(["남자코트", "강남우동", "파이썬", "카카오"]);
+        let [글제목, 글제목정렬] = React.useState(["남자코트", "강남우동"]);
         return (
           <div className="app">
             <div className="black-nav">
               <h4>ReactBlog</h4>
             </div>
-
-            <div className="btn">
-              <button
-                onClick={() => {
-                  let copy = [...글제목];
-                  let 정렬 = copy.sort();
-                  글제목변경(정렬);
-                }}
-              >
-                가나다순정렬
-              </button>
-              <button
-                onClick={() => {
-                  let copy = [...글제목];
-                  copy[0] = "여자코트";
-                  글제목변경(copy);
-                }}
-              >
-                제목변경
-              </button>
-            </div>
-
-            <div className="list">
-              <h4>{글제목[0]}</h4>
-              <p>7/21발행</p>
-            </div>
-            <div className="list">
-              <h4>{글제목[1]}</h4>
-              <p>7/21발행</p>
-            </div>
-            <div className="list">
-              <h4>{글제목[2]}</h4>
-              <p>7/21발행</p>
-            </div>
-            <div className="list">
-              <h4>{글제목[3]}</h4>
-              <p>7/21발행</p>
-            </div>
-
+            <Sorting />
+            <ColumnList num={0} />
+            <ColumnList num={1} />
             <Modal />
           </div>
         );

@@ -28,6 +28,10 @@
   font-weight: 600;
 }
 
+.list h4 span {
+  cursor: pointer;
+}
+
 .modal {
   margin-top: 20px;
   padding: 20px;
