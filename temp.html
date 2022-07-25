@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/temp.css" />
     <title>React temp</title>
   </head>
@@ -11,7 +13,7 @@
     <div id="root"></div>
 
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
@@ -23,23 +25,6 @@
             <h4>제목</h4>
             <p>22/07/22</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </div>
-        );
-      }
-
-      function ColumnList({ num }) {
-        let 글제목 = ["남자코트", "강남우동"];
-        let [like, setLike] = React.useState(0);
-        return (
-          <div className="list">
-            <h4>
-              {글제목[{ num }]}
-              <span onClick={setLike((current) => current + 1)}>
-                👍
-                {like}
-              </span>
-            </h4>
-            <p>7/21발행</p>
           </div>
         );
       }
@@ -58,20 +43,32 @@
         );
       }
 
-      ColumnList.propTypes = {
-        value: PropTypes.number,
-      };
+      function ColumnList({ value }) {
+        return (
+          <div className="list">
+            <h4>
+              {value}
+              <span onClick={setLike((current) => current + 1)}>
+                👍
+                {like}
+              </span>
+            </h4>
+            <p>7/21발행</p>
+          </div>
+        );
+      }
 
       function App() {
         let [글제목, 글제목정렬] = React.useState(["남자코트", "강남우동"]);
+        let [like, setLike] = React.useState(0);
         return (
           <div className="app">
             <div className="black-nav">
               <h4>ReactBlog</h4>
             </div>
             <Sorting />
-            <ColumnList num={0} />
-            <ColumnList num={1} />
+            <ColumnList value={글제목[0]} />
+            <ColumnList value={글제목[1]} />
             <Modal />
           </div>
         );
