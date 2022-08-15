@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/temp.css" />
     <title>React temp</title>
   </head>
@@ -30,6 +28,7 @@
       }
 
       function Sorting() {
+        let [글제목, 글제목정렬] = React.useState(["남자코트", "강남우동"]);
         return (
           <button
             onClick={() => {
@@ -44,11 +43,12 @@
       }
 
       function ColumnList({ value }) {
+        let [like, setLike] = React.useState(0);
         return (
           <div className="list">
             <h4>
               {value}
-              <span onClick={setLike((current) => current + 1)}>
+              <span onClick={() => setLike((current) => current + 1)}>
                 👍
                 {like}
               </span>
@@ -59,8 +59,7 @@
       }
 
       function App() {
-        let [글제목, 글제목정렬] = React.useState(["남자코트", "강남우동"]);
-        let [like, setLike] = React.useState(0);
+        let 글제목 = ["남자코트", "강남우동"];
         return (
           <div className="app">
             <div className="black-nav">
